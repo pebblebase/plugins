@@ -1,6 +1,6 @@
 {
   "name": "pebblebase",
-  "description": "The pebblebase plugin for Claude.",
+  "description": "The pebblebase plugin for AI apps.",
   "owner": { "name": "pebblebase", "url": "https://pebblebase.dev" },
   "plugins": [{ "name": "pebblebase", "source": "./" }]
 }

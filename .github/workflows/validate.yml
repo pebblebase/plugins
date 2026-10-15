@@ -18,5 +18,17 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Validate the marketplace, plugin and skill
         run: claude plugin validate . --strict
+      - name: Validate the Cursor manifests against Cursor's schemas
+        env:
+          SCHEMAS: https://raw.githubusercontent.com/cursor/plugins/e5136d82418d2db3165ea1050d17577cd618cc05/schemas
+        run: |
+          pipx run --spec check-jsonschema==0.38.2 check-jsonschema --schemafile "$SCHEMAS/plugin.schema.json" .cursor-plugin/plugin.json
+          pipx run --spec check-jsonschema==0.38.2 check-jsonschema --schemafile "$SCHEMAS/marketplace.schema.json" .cursor-plugin/marketplace.json
       - name: The plugin points only at the pebblebase MCP URL
-        run: test "$(jq -c . .mcp.json)" = '{"mcpServers":{"pebblebase":{"type":"http","url":"https://mcp.pebblebase.dev/mcp"}}}'
+        run: |
+          expected='{"mcpServers":{"pebblebase":{"type":"http","url":"https://mcp.pebblebase.dev/mcp"}}}'
+          test "$(jq -c . .mcp.json)" = "$expected"
+          test "$(jq -c . mcp.json)" = "$expected"
+          test "$(jq -r .mcpServers .cursor-plugin/plugin.json)" = ./mcp.json
+      - name: Both manifests carry the same version
+        run: test "$(jq -r .version .claude-plugin/plugin.json)" = "$(jq -r .version .cursor-plugin/plugin.json)"

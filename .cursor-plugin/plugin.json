@@ -1,0 +1,16 @@
+{
+  "name": "pebblebase",
+  "displayName": "pebblebase",
+  "version": "0.2.0",
+  "description": "Keep the tools you build with your AI as pebbles: small databases with their data, rules, views, reminders, tests and notes.",
+  "author": { "name": "pebblebase" },
+  "homepage": "https://pebblebase.dev",
+  "repository": "https://github.com/pebblebase/plugins",
+  "license": "Apache-2.0",
+  "logo": "assets/logo.svg",
+  "keywords": ["pebblebase", "mcp", "database", "sqlite", "trackers"],
+  "category": "productivity",
+  "tags": ["pebblebase", "mcp", "database"],
+  "mcpServers": "./mcp.json",
+  "skills": "./skills/"
+}
