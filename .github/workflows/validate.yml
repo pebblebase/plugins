@@ -1,0 +1,22 @@
+name: validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Claude Code
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash -s 2.1.300
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Validate the marketplace, plugin and skill
+        run: claude plugin validate . --strict
+      - name: The plugin points only at the pebblebase MCP URL
+        run: test "$(jq -c . .mcp.json)" = '{"mcpServers":{"pebblebase":{"type":"http","url":"https://mcp.pebblebase.dev/mcp"}}}'
