@@ -1,5 +1,5 @@
 {
   "mcpServers": {
-    "pebblebase": { "type": "http", "url": "https://mcp.pebblebase.dev/mcp" }
+    "pebblebase": { "type": "http", "url": "https://mcp.example.com/mcp" }
   }
 }
