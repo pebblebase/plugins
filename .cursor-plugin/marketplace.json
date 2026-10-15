@@ -1,0 +1,6 @@
+{
+  "name": "pebblebase",
+  "owner": { "name": "pebblebase" },
+  "metadata": { "description": "The pebblebase plugin for AI apps." },
+  "plugins": [{ "name": "pebblebase", "source": "./", "description": "Keep the tools you build with your AI as pebbles: small databases with their data, rules, views, reminders, tests and notes." }]
+}
