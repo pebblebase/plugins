@@ -1,6 +1,6 @@
 {
   "name": "pebblebase",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Keep the tools you build with your AI as pebbles: small databases with their data, rules, views, reminders, tests and notes.",
   "author": { "name": "pebblebase", "url": "https://pebblebase.dev" },
   "homepage": "https://pebblebase.dev",

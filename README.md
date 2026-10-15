@@ -1,6 +1,6 @@
 # pebblebase plugin
 
-pebblebase keeps the tools you build with your AI. Each one is a pebble: a small database with its data, rules, views, reminders, tests and notes. This plugin connects your AI app to pebblebase and adds a skill that helps it find, build and use your pebbles. It works with Claude, Cursor and Grok Bot.
+pebblebase keeps the tools you build with your AI. Each one is a pebble: a small database with its data, rules, views, reminders, tests and notes. This plugin connects your AI app to pebblebase and adds a skill that helps it find, build and use your pebbles. It's packaged for Claude, Cursor and Grok Bot.
 
 ## Install
 
@@ -17,19 +17,25 @@ Then run `/mcp`, choose pebblebase, and sign in with a passkey.
 
 In Claude on the web or desktop: go to Customize → Plugins → Add → Add marketplace, enter `pebblebase/plugins`, and add pebblebase. Then connect it from the plugin's Connectors tab.
 
+If you already connected pebblebase, the plugin uses the same server, so you see one set of tools.
+
 ### Cursor
 
-Once pebblebase is listed in the Cursor marketplace, install pebblebase from it. Until then, add the MCP URL https://mcp.pebblebase.dev/mcp as a custom connector and sign in with a passkey.
+Not yet tested. pebblebase isn't in the Cursor Marketplace yet. Until it is, paste this link into your browser, confirm in Cursor, and sign in with a passkey when asked:
+
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=pebblebase&config=eyJ1cmwiOiJodHRwczovL21jcC5wZWJibGViYXNlLmRldi9tY3AifQ==
+```
+
+This adds the pebblebase server without the skill. On a Cursor Teams or Enterprise plan, an admin can add the whole plugin for the team: Dashboard → Plugins & MCPs → Team Marketplaces → Add Marketplace → Import from Repo, with `https://github.com/pebblebase/plugins`.
 
 ### Grok Bot
 
-Grok Bot uses the Cursor marketplace. Once pebblebase is listed there, install pebblebase from it. Until then, add the MCP URL https://mcp.pebblebase.dev/mcp as a custom connector and sign in with a passkey.
-
-If you already connected pebblebase, the plugin uses the same server, so you see one set of tools.
+Not yet tested. Grok Bot adds plugins from the Cursor Marketplace, under Connect apps in its sidebar, and pebblebase isn't listed there yet. If you use Grok Bot through a Cursor team, your admin can add pebblebase to the team marketplace, as described under Cursor.
 
 ## What it contains
 
-- `.claude-plugin/`: the Claude plugin and marketplace manifests. Grok Build reads these too.
+- `.claude-plugin/`: the Claude plugin and marketplace manifests. Grok Build reads these too, in place of its own `.grok-plugin/` manifests.
 - `.cursor-plugin/`: the Cursor plugin and marketplace manifests, used by Cursor and Grok Bot.
 - `.mcp.json` (Claude) and `mcp.json` (Cursor): the same pebblebase MCP server at https://mcp.pebblebase.dev/mcp. Nothing runs on your computer.
 - `skills/pebbles`: when to use pebblebase and where to start. Every app uses the same skill.
